@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MarketHinge — Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --y:#F5C800;--y2:#C8A000;
+  --b:#070707;--b2:#0C0C0C;--b3:#131313;--b4:#1A1A1A;
+  --w:#FFFFFF;--off:#D4CFC6;
+  --m:#999;--m2:#2A2A2A;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--b);color:var(--w);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:2px;}
+::-webkit-scrollbar-track{background:var(--b);}
+::-webkit-scrollbar-thumb{background:var(--y);}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 52px;
+  background:rgba(7,7,7,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(245,200,0,0.06);
+}
+.nav-logo-wrap{display:flex;align-items:center;gap:12px;}
+.nav-logo-text{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;letter-spacing:0.1em;color:var(--w);
+}
+.nav-logo-text span{color:var(--y);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{
+  font-size:10px;font-weight:500;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--m);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--y);}
+.nav-cta{
+  background:var(--y);color:var(--b)!important;
+  padding:9px 24px;font-weight:600!important;letter-spacing:0.14em!important;
+  transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.88;color:var(--b)!important;}
+
+/* ══════════════════════════════
+   HERO — Full, dense, editorial
+══════════════════════════════ */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  padding:100px 0 0;
+  position:relative;overflow:hidden;
+  background:var(--b);
+}
+
+/* Diagonal yellow slash across hero */
+.hero-slash{
+  position:absolute;
+  top:-10%;right:8%;
+  width:3px;height:130%;
+  background:linear-gradient(to bottom,transparent,rgba(245,200,0,0.15),transparent);
+  transform:rotate(12deg);
+  pointer-events:none;
+}
+.hero-slash2{
+  position:absolute;
+  top:-10%;right:14%;
+  width:1px;height:130%;
+  background:linear-gradient(to bottom,transparent,rgba(245,200,0,0.06),transparent);
+  transform:rotate(12deg);
+  pointer-events:none;
+}
+
+/* Top bar */
+.hero-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;
+  border-bottom:1px solid var(--m2);
+  padding-bottom:20px;
+}
+.hero-topbar-tag{
+  font-size:9px;font-weight:500;letter-spacing:0.32em;
+  text-transform:uppercase;color:var(--y);
+  display:flex;align-items:center;gap:10px;
+}
+.hero-topbar-tag::before{content:'';width:20px;height:1px;background:var(--y);}
+.hero-topbar-meta{font-size:9px;color:#777;letter-spacing:0.2em;text-transform:uppercase;}
+
+/* Main content area */
+.hero-main{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  align-items:center;
+  padding:0 52px;
+  gap:40px;
+}
+
+.hero-left{}
+
+/* Giant brand name */
+.hero-wordmark{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(80px,13vw,180px);
+  line-height:0.88;
+  letter-spacing:0.02em;
+  color:var(--w);
+  margin-bottom:32px;
+  position:relative;
+}
+.hero-wordmark .gold{color:var(--y);}
+.hero-wordmark .outlined{
+  -webkit-text-stroke:2px rgba(255,255,255,0.15);
+  color:transparent;
+  display:block;
+}
+
+.hero-desc{
+  font-size:14px;color:var(--m);line-height:1.85;
+  max-width:480px;margin-bottom:36px;
+}
+.hero-desc strong{color:var(--off);font-weight:400;}
+
+.hero-actions{display:flex;gap:12px;align-items:center;}
+.btn-primary{
+  background:var(--y);color:var(--b);
+  padding:13px 28px;font-size:11px;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:opacity 0.2s,transform 0.15s;
+}
+.btn-primary:hover{opacity:0.88;transform:translateY(-1px);}
+.btn-secondary{
+  color:var(--off);font-size:11px;letter-spacing:0.16em;
+  text-transform:uppercase;text-decoration:none;
+  border-bottom:1px solid #333;padding-bottom:2px;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-secondary:hover{color:var(--y);border-color:var(--y);}
+
+/* Hero right — logo + cards */
+.hero-right{
+  display:flex;flex-direction:column;gap:16px;
+  align-self:center;
+}
+
+/* The logo mark box */
+.hero-logobox{
+  background:var(--b3);
+  border:1px solid var(--m2);
+  border-top:3px solid var(--y);
+  padding:36px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+
+/* Three mini value cards */
+.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.hero-card{
+  background:var(--b3);
+  border-top:1px solid var(--m2);
+  padding:16px 14px;
+}
+.hero-card-label{
+  font-size:8px;color:#999;letter-spacing:0.2em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+.hero-card-value{
+  font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:700;color:var(--y);
+  line-height:1.3;
+}
+
+/* Bottom bar */
+.hero-bottombar{
+  display:flex;align-items:stretch;
+  border-top:1px solid var(--m2);
+}
+.hero-bottombar-item{
+  flex:1;padding:20px 52px;
+  border-right:1px solid var(--m2);
+  display:flex;align-items:center;gap:16px;
+}
+.hero-bottombar-item:last-child{border-right:none;}
+.hbi-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;color:var(--y);line-height:1;
+}
+.hbi-text{font-size:11px;color:var(--m);line-height:1.4;}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--y);overflow:hidden;padding:12px 0;
+}
+.ticker-track{
+  display:flex;width:max-content;
+  animation:scroll 25s linear infinite;
+}
+.tick-item{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:14px;letter-spacing:0.2em;color:var(--b);
+  padding:0 24px;white-space:nowrap;
+}
+.tick-sep{color:rgba(0,0,0,0.3);padding:0 6px;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SECTIONS COMMON ── */
+section{padding:110px 52px;}
+.eye{
+  font-size:9px;font-weight:500;letter-spacing:0.32em;
+  text-transform:uppercase;color:var(--y);
+  margin-bottom:12px;display:flex;align-items:center;gap:10px;
+}
+.eye::before{content:'';width:18px;height:1px;background:var(--y);}
+h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(40px,5vw,68px);
+  letter-spacing:0.04em;color:var(--w);
+  line-height:0.95;margin-bottom:16px;
+}
+h2 .y{color:var(--y);}
+
+/* ── ABOUT ── */
+#about{background:var(--b2);}
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.about-left{
+  padding-right:64px;
+  border-right:1px solid var(--m2);
+}
+.about-right{padding-left:64px;}
+.about-pull{
+  font-family:'Syne',sans-serif;font-size:20px;font-weight:700;
+  color:var(--w);line-height:1.4;margin-bottom:28px;
+  border-left:3px solid var(--y);padding-left:20px;
+}
+.about-body{font-size:14px;color:var(--m);line-height:1.9;margin-bottom:20px;}
+.about-body strong{color:var(--off);font-weight:400;}
+.three-words{margin-top:48px;display:flex;flex-direction:column;gap:0;}
+.tw-row{
+  display:flex;align-items:baseline;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--m2);
+}
+.tw-row:first-child{border-top:1px solid var(--m2);}
+.tw-word{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:36px;color:var(--y);letter-spacing:0.06em;
+  flex-shrink:0;width:180px;
+}
+.tw-desc{font-size:13px;color:var(--m);line-height:1.6;}
+
+/* ── WHY ── */
+#why{background:var(--b);padding:0;}
+.why-outer{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:70vh;
+}
+.why-left{
+  background:var(--y);
+  padding:80px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.why-eyebrow{
+  font-size:9px;font-weight:500;letter-spacing:0.32em;
+  text-transform:uppercase;color:rgba(0,0,0,0.7);
+  margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.why-eyebrow::before{content:'';width:18px;height:1px;background:rgba(0,0,0,0.4);}
+.why-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(40px,5vw,64px);
+  color:var(--b);letter-spacing:0.04em;line-height:1.0;
+  margin-bottom:28px;
+}
+.why-sub{font-size:14px;color:rgba(0,0,0,0.75);line-height:1.85;}
+.why-sub strong{color:var(--b);font-weight:500;}
+.why-right{
+  background:var(--b3);
+  padding:80px 60px;
+  display:flex;flex-direction:column;justify-content:center;gap:28px;
+}
+.why-point{
+  display:flex;gap:20px;align-items:flex-start;
+  padding-bottom:28px;border-bottom:1px solid var(--m2);
+}
+.why-point:last-child{border:none;padding-bottom:0;}
+.why-point-num{
+  font-family:'Bebas Neue',sans-serif;font-size:36px;
+  color:var(--y);opacity:0.3;line-height:1;flex-shrink:0;width:40px;
+}
+.why-point-content{}
+.why-point-title{
+  font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
+  color:var(--w);margin-bottom:6px;
+}
+.why-point-text{font-size:13px;color:var(--m);line-height:1.7;}
+
+/* ── SERVICES ── */
+#services{background:var(--b2);}
+.svc-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.svc-card{
+  background:var(--b3);padding:44px 36px;
+  position:relative;overflow:hidden;
+  transition:background 0.3s;
+  display:flex;flex-direction:column;gap:0;
+}
+/* Yellow left border on hover */
+.svc-card::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--y);transform:scaleY(0);transform-origin:bottom;
+  transition:transform 0.4s ease;
+}
+.svc-card:hover::after{transform:scaleY(1);}
+.svc-card:hover{background:var(--b4);}
+.svc-n{
+  font-size:9px;color:#777;letter-spacing:0.2em;
+  margin-bottom:20px;
+}
+.svc-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;letter-spacing:0.06em;color:var(--w);
+  margin-bottom:8px;line-height:1;
+}
+.svc-hook{font-size:12px;color:var(--y);font-style:italic;margin-bottom:24px;line-height:1.5;}
+.svc-line{height:1px;background:var(--m2);margin-bottom:24px;}
+.svc-list{display:flex;flex-direction:column;gap:9px;flex:1;}
+.svc-li{
+  font-size:13px;color:var(--m);
+  display:flex;align-items:center;gap:10px;
+  padding-left:0;transition:color 0.2s;
+}
+.svc-li::before{
+  content:'';width:4px;height:1px;background:var(--y);flex-shrink:0;
+}
+.svc-card:hover .svc-li{color:#888;}
+
+/* ── TEAM ── */
+#team{background:var(--b);}
+.team-top{margin-bottom:64px;}
+.team-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.team-card{
+  background:var(--b3);
+  position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.team-card:hover{background:var(--b4);}
+.team-card-top{
+  padding:36px 32px 28px;
+  border-bottom:1px solid var(--m2);
+}
+.team-num{
+  font-family:'Bebas Neue',sans-serif;font-size:11px;
+  letter-spacing:0.2em;color:#666;margin-bottom:20px;
+}
+.team-name{
+  font-family:'Bebas Neue',sans-serif;font-size:32px;
+  letter-spacing:0.06em;color:var(--w);line-height:1;margin-bottom:8px;
+}
+.team-role{
+  font-size:10px;color:var(--y);letter-spacing:0.2em;
+  text-transform:uppercase;
+}
+.team-card-body{padding:28px 32px;}
+.team-bio{font-size:13px;color:var(--m);line-height:1.8;}
+
+/* ── CONTACT ── */
+#contact{background:var(--b2);}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.contact-left{
+  padding-right:64px;border-right:1px solid var(--m2);
+}
+.contact-right{padding-left:64px;}
+.contact-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(44px,6vw,80px);
+  letter-spacing:0.04em;color:var(--w);
+  line-height:0.95;margin-bottom:20px;
+}
+.contact-big .y{color:var(--y);}
+.contact-sub{font-size:14px;color:var(--m);line-height:1.85;margin-bottom:44px;}
+.clinks{display:flex;flex-direction:column;}
+.clink{
+  display:flex;align-items:center;gap:16px;
+  text-decoration:none;color:var(--m);font-size:13px;
+  padding:16px 0;border-bottom:1px solid var(--m2);
+  transition:color 0.2s;
+}
+.clink:first-child{border-top:1px solid var(--m2);}
+.clink:hover{color:var(--y);}
+.clink-ico{
+  width:32px;height:32px;background:var(--b4);
+  border:1px solid var(--m2);display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:12px;
+  transition:background 0.2s,border-color 0.2s,color 0.2s;
+}
+.clink:hover .clink-ico{background:var(--y);border-color:var(--y);color:var(--b);}
+.avail{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,200,0,0.05);border:1px solid rgba(245,200,0,0.12);
+  padding:7px 14px;font-size:9px;color:var(--y);
+  letter-spacing:0.16em;text-transform:uppercase;margin-bottom:28px;
+}
+.adot{width:5px;height:5px;background:#4caf84;border-radius:50%;animation:p 2s infinite;}
+@keyframes p{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.cform{display:flex;flex-direction:column;gap:12px;}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cf{display:flex;flex-direction:column;gap:6px;}
+.cf label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:#888;}
+.cf input,.cf textarea,.cf select{
+  background:var(--b4);border:1px solid var(--m2);
+  color:var(--w);padding:11px 14px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;
+  outline:none;transition:border-color 0.2s;width:100%;
+}
+.cf input:focus,.cf textarea:focus,.cf select:focus{border-color:var(--y);}
+.cf textarea{resize:vertical;min-height:90px;}
+.cf select option{background:var(--b4);}
+.csub{
+  background:var(--y);color:var(--b);border:none;
+  padding:13px 28px;font-family:'DM Sans',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;cursor:pointer;
+  transition:opacity 0.2s;align-self:flex-start;margin-top:6px;
+}
+.csub:hover{opacity:0.88;}
+
+/* ── OUTRO ── */
+.outro{
+  background:var(--b);
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:50vh;
+}
+.outro-left{
+  background:var(--b3);
+  display:flex;flex-direction:column;
+  justify-content:center;padding:80px 60px;
+  border-right:1px solid var(--m2);
+}
+.outro-ty{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(72px,10vw,120px);
+  letter-spacing:0.04em;line-height:0.9;margin-bottom:24px;
+}
+.outro-ty .w{color:var(--w);}
+.outro-ty .y{color:var(--y);}
+.outro-sub{font-size:14px;color:var(--m);line-height:1.8;max-width:360px;}
+.outro-right{
+  background:var(--y);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;
+  padding:80px 60px;gap:24px;
+}
+.outro-right-label{
+  font-size:9px;font-weight:500;letter-spacing:0.28em;
+  text-transform:uppercase;color:rgba(0,0,0,0.65);
+}
+.outro-right-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(28px,3.5vw,44px);
+  color:var(--b);letter-spacing:0.04em;line-height:1.1;
+}
+.btn-dark{
+  background:var(--b);color:var(--y);
+  padding:14px 30px;font-size:11px;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:opacity 0.2s;
+}
+.btn-dark:hover{opacity:0.85;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--b2);border-top:1px solid var(--m2);
+  padding:22px 52px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.f-brand{
+  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  letter-spacing:0.1em;color:var(--w);
+}
+.f-brand span{color:var(--y);}
+.f-nav{display:flex;gap:24px;}
+.f-nav a{font-size:10px;color:#666;text-decoration:none;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.2s;}
+.f-nav a:hover{color:var(--y);}
+.f-social{display:flex;gap:16px;}
+.f-social a{font-size:10px;color:#666;text-decoration:none;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.2s;}
+.f-social a:hover{color:var(--y);}
+.f-copy{font-size:10px;color:#666;letter-spacing:0.08em;}
+
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .hero-main{grid-template-columns:1fr;padding:32px 24px;}
+  .hero-right{display:none;}
+  .hero-topbar,.hero-bottombar{padding-left:24px;padding-right:24px;}
+  .hero-bottombar{flex-direction:column;}
+  .hero-bottombar-item{border-right:none;border-bottom:1px solid var(--m2);padding:16px 24px;}
+  section{padding:80px 24px;}
+  .about-layout,.contact-layout{grid-template-columns:1fr;}
+  .about-left{padding-right:0;border-right:none;padding-bottom:48px;border-bottom:1px solid var(--m2);}
+  .about-right{padding-left:0;}
+  .contact-left{padding-right:0;border-right:none;padding-bottom:48px;border-bottom:1px solid var(--m2);}
+  .contact-right{padding-left:0;}
+  .why-outer,.outro{grid-template-columns:1fr;}
+  .svc-grid,.team-layout{grid-template-columns:1fr;}
+  .hero-cards{grid-template-columns:1fr;}
+  .crow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo-wrap">
+    <!-- Inline SVG logo mark (simplified from PDF) -->
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="38" height="38" rx="4" fill="#070707" stroke="#F5C800" stroke-width="1.5"/>
+      <path d="M7 30 L7 10 L20 22 L33 10 L33 30" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Hinge circle on right diagonal peak -->
+      <circle cx="33" cy="10" r="5" fill="#070707" stroke="#F5C800" stroke-width="2"/>
+      <circle cx="33" cy="10" r="1.8" fill="#F5C800"/>
+      <!-- Arrow tip -->
+      <path d="M33 6 L36 10 L30 10 Z" fill="#F5C800" opacity="0.7"/>
+    </svg>
+    <div class="nav-logo-text">Market<span>Hinge</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero" id="home">
+  <div class="hero-slash"></div>
+  <div class="hero-slash2"></div>
+
+  <!-- Top label bar -->
+  <div class="hero-topbar">
+    <div class="hero-topbar-tag">New-Age Marketing Agency · Mumbai, India</div>
+    <div class="hero-topbar-meta">Data × Creativity × Growth</div>
+  </div>
+
+  <!-- Main hero body -->
+  <div class="hero-main">
+    <div class="hero-left">
+      <div class="hero-wordmark">
+        <span>Market</span><br>
+        <span class="gold">Hinge</span><br>
+        <span class="outlined">Agency</span>
+      </div>
+      <p class="hero-desc">
+        We are strategists, creators, analysts and operators who chose to build something together — not to replicate traditional agency structures, but to combine <strong>depth with imagination.</strong>
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Quote →</a>
+        <a href="#about" class="btn-secondary">Our Story</a>
+      </div>
+    </div>
+
+    <!-- Right panel: logo + 3 value cards -->
+    <div class="hero-right">
+      <!-- Logo box -->
+      <div class="hero-logobox">
+        <svg width="180" height="160" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Big M letterform -->
+          <path d="M20 155 L20 40 L100 110 L180 40 L180 155" fill="none" stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Hinge mechanism on right peak (180,40) -->
+          <!-- Outer glow ring -->
+          <circle cx="180" cy="40" r="22" fill="rgba(245,200,0,0.08)"/>
+          <!-- Hinge outer -->
+          <circle cx="180" cy="40" r="16" fill="#070707" stroke="#F5C800" stroke-width="2.5"/>
+          <!-- Hinge inner -->
+          <circle cx="180" cy="40" r="7" fill="rgba(245,200,0,0.15)" stroke="#F5C800" stroke-width="1.5"/>
+          <!-- Pin -->
+          <circle cx="180" cy="40" r="3" fill="#F5C800"/>
+          <!-- Arrow tip emerging upward -->
+          <polygon points="180,8 172,24 188,24" fill="#F5C800"/>
+          <!-- Arrow shaft -->
+          <line x1="180" y1="24" x2="180" y2="27" stroke="#F5C800" stroke-width="2.5"/>
+          <!-- Agency wordmark under -->
+          <text x="100" y="178" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="14" fill="#888" letter-spacing="6">MARKETHINGE</text>
+        </svg>
+      </div>
+      <!-- Value cards -->
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-label">Focus</div>
+          <div class="hero-card-value">Conversion-<br>First</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Approach</div>
+          <div class="hero-card-value">Data ×<br>Creative</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Structure</div>
+          <div class="hero-card-value">Collective-<br>Led</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom info bar -->
+  <div class="hero-bottombar">
+    <div class="hero-bottombar-item">
+      <div class="hbi-num">3</div>
+      <div class="hbi-text">Core<br>Disciplines</div>
+    </div>
+    <div class="hero-bottombar-item">
+      <div class="hbi-num">∞</div>
+      <div class="hbi-text">Built to<br>Scale</div>
+    </div>
+    <div class="hero-bottombar-item">
+      <div class="hbi-num">01</div>
+      <div class="hbi-text">Agency.<br>No Silos.</div>
+    </div>
+    <div class="hero-bottombar-item" style="border-right:none;">
+      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;">Start a Project →</a>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="tick-item">Performance Marketing</span><span class="tick-sep">·</span>
+    <span class="tick-item">Social Media</span><span class="tick-sep">·</span>
+    <span class="tick-item">Creative Production</span><span class="tick-sep">·</span>
+    <span class="tick-item">Funnel Strategy</span><span class="tick-sep">·</span>
+    <span class="tick-item">Brand Growth</span><span class="tick-sep">·</span>
+    <span class="tick-item">Meta Ads</span><span class="tick-sep">·</span>
+    <span class="tick-item">Google Ads</span><span class="tick-sep">·</span>
+    <span class="tick-item">Content Creation</span><span class="tick-sep">·</span>
+    <span class="tick-item">Audience Targeting</span><span class="tick-sep">·</span>
+    <span class="tick-item">CRO</span><span class="tick-sep">·</span>
+    <span class="tick-item">Performance Marketing</span><span class="tick-sep">·</span>
+    <span class="tick-item">Social Media</span><span class="tick-sep">·</span>
+    <span class="tick-item">Creative Production</span><span class="tick-sep">·</span>
+    <span class="tick-item">Funnel Strategy</span><span class="tick-sep">·</span>
+    <span class="tick-item">Brand Growth</span><span class="tick-sep">·</span>
+    <span class="tick-item">Meta Ads</span><span class="tick-sep">·</span>
+    <span class="tick-item">Google Ads</span><span class="tick-sep">·</span>
+    <span class="tick-item">Content Creation</span><span class="tick-sep">·</span>
+    <span class="tick-item">Audience Targeting</span><span class="tick-sep">·</span>
+    <span class="tick-item">CRO</span><span class="tick-sep">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-left">
+      <div class="eye">About</div>
+      <h2>Built by a<br>collective.<br><span class="y">Driven by<br>craft.</span></h2>
+    </div>
+    <div class="about-right">
+      <div class="about-pull">
+        We are strategists, creators, analysts and operators who chose to build something together — not to replicate traditional agency structures, but to combine depth with imagination.
+      </div>
+      <p class="about-body">
+        MarketHinge is formed as a <strong>community-led agency</strong> — a collective of professionals who come from different organisations, disciplines and roles, each bringing their own specialised expertise across marketing strategy, creative production and digital growth.
+      </p>
+      <p class="about-body">
+        Our team combines <strong>analytical performance marketing</strong> with strong creative execution to help brands connect with the right audience and drive measurable results.
+      </p>
+      <div class="three-words">
+        <div class="tw-row">
+          <div class="tw-word">Structured.</div>
+          <div class="tw-desc">Every campaign built with precision, clear architecture, and defined conversion goals.</div>
+        </div>
+        <div class="tw-row">
+          <div class="tw-word">Strategic.</div>
+          <div class="tw-desc">Data-informed decisions that drive real, measurable outcomes — not vanity metrics.</div>
+        </div>
+        <div class="tw-row">
+          <div class="tw-word">Scalable.</div>
+          <div class="tw-desc">Systems built to grow with your brand without losing efficiency or creative quality.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="padding:0;">
+  <div class="why-outer">
+    <div class="why-left">
+      <div class="why-eyebrow">The Problem We Solve</div>
+      <div class="why-big">Most brands don't struggle because of poor products.</div>
+      <p class="why-sub">They struggle because their marketing <strong>lacks structure, strategy and conversion focus.</strong></p>
+    </div>
+    <div class="why-right">
+      <div class="why-point">
+        <div class="why-point-num">01</div>
+        <div class="why-point-content">
+          <div class="why-point-title">No Clear Strategy</div>
+          <div class="why-point-text">Most brands run ads without a clear funnel. Clicks don't convert because the journey from awareness to purchase is broken.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">02</div>
+        <div class="why-point-content">
+          <div class="why-point-title">Creative Without Data</div>
+          <div class="why-point-text">Beautiful content that doesn't perform. We believe great creative and sharp analytics must work together — always.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">03</div>
+        <div class="why-point-content">
+          <div class="why-point-title">The MarketHinge Fix</div>
+          <div class="why-point-text">We bring performance marketing precision and creative production under one roof — so your brand gets seen, trusted and chosen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-top">
+    <div>
+      <div class="eye">Services</div>
+      <h2>What we<br><span class="y">do best.</span></h2>
+    </div>
+    <p style="font-size:14px;color:var(--m);max-width:320px;line-height:1.7;">Three disciplines. One agency. All working together toward one goal — growth that compounds.</p>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc-card">
+      <div class="svc-n">01 ——</div>
+      <div class="svc-title">Social Media<br>Marketing</div>
+      <div class="svc-hook">Turning your brand scroll-stopping and double-tap worthy.</div>
+      <div class="svc-line"></div>
+      <div class="svc-list">
+        <div class="svc-li">Content Creation</div>
+        <div class="svc-li">Content Calendar</div>
+        <div class="svc-li">UGC / Influencer Marketing</div>
+        <div class="svc-li">Audience Research</div>
+        <div class="svc-li">Community Management</div>
+        <div class="svc-li">Growth Insights</div>
+      </div>
+    </div>
+
+    <div class="svc-card" style="background:var(--b4);">
+      <div class="svc-n">02 ——</div>
+      <div class="svc-title">Performance<br>Marketing</div>
+      <div class="svc-hook">Turn ad spend into leads, sales and sweet ROI.</div>
+      <div class="svc-line"></div>
+      <div class="svc-list">
+        <div class="svc-li">Paid Advertising (Meta & Google)</div>
+        <div class="svc-li">Funnel Marketing</div>
+        <div class="svc-li">Conversion Rate Optimization</div>
+        <div class="svc-li">Audience Targeting</div>
+        <div class="svc-li">Retargeting Campaigns</div>
+        <div class="svc-li">Analytics & Reporting</div>
+      </div>
+      <!-- Featured badge -->
+      <div style="margin-top:24px;display:inline-block;background:rgba(245,200,0,0.08);border:1px solid rgba(245,200,0,0.15);color:var(--y);font-size:9px;padding:4px 12px;letter-spacing:0.14em;text-transform:uppercase;">Core Strength</div>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-n">03 ——</div>
+      <div class="svc-title">Creative<br>Production</div>
+      <div class="svc-hook">We create visuals so good, your audience can't look away.</div>
+      <div class="svc-line"></div>
+      <div class="svc-list">
+        <div class="svc-li">Ad Creatives & Motion Graphics</div>
+        <div class="svc-li">Website Visuals</div>
+        <div class="svc-li">Short-form Content</div>
+        <div class="svc-li">Infographics</div>
+        <div class="svc-li">Social Media Post Designs</div>
+        <div class="svc-li">Explainer Videos</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-top">
+    <div class="eye">The Team</div>
+    <h2>The minds behind<br><span class="y">MarketHinge.</span></h2>
+  </div>
+  <div class="team-layout">
+
+    <div class="team-card">
+      <div class="team-card-top">
+        <div class="team-num">01 · FOUNDER</div>
+        <div class="team-name">Harsh Shetye</div>
+        <div class="team-role">Performance Marketer</div>
+      </div>
+      <div class="team-card-body">
+        <p class="team-bio">Performance marketing, done with precision. With 2 years of hands-on experience across digital ad platforms, the focus stays on one thing — results. Campaigns scaled to 3x ROAS through relentless testing and funnel optimization. Because smart marketing was never about spending more; it's about spending right.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-top">
+        <div class="team-num">02 · CREATIVE</div>
+        <div class="team-name">Vinit Sakharkar</div>
+        <div class="team-role">VFX & Graphics</div>
+      </div>
+      <div class="team-card-body">
+        <p class="team-bio">Leads the creative production side of MarketHinge, bringing brands to life through animation, motion graphics, and visual storytelling. His work focuses on creating engaging visual assets that capture attention quickly and communicate brand messages effectively across digital platforms.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-top">
+        <div class="team-num">03 · SOCIAL</div>
+        <div class="team-name">Khushi Singh</div>
+        <div class="team-role">Social Media Manager</div>
+      </div>
+      <div class="team-card-body">
+        <p class="team-bio">Managing brand presence across social platforms, ensuring consistent communication, engaging content and strong community interaction. With a focus on content planning, audience engagement, and platform trends, she helps brands build meaningful connections with their audience.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <div class="eye">Contact</div>
+      <div class="contact-big">Let's make<br>it <span class="y">happen.</span></div>
+      <p class="contact-sub">MarketHinge is built by specialists who think beyond deliverables. When you reach out, you're not contacting a single department — you're starting a collaboration.</p>
+      <div class="clinks">
+        <a href="mailto:connect.markethinge@gmail.com" class="clink"><div class="clink-ico">✉</div>connect.markethinge@gmail.com</a>
+        <a href="tel:+919967982973" class="clink">
+          <div class="clink-ico">☎</div>+91 99679-82973
+        </a>
+        <a href="https://www.instagram.com/markethinge/" target="_blank" class="clink">
+          <div class="clink-ico">◎</div>@markethinge
+        </a>
+        <a href="https://in.linkedin.com/in/harsh-shetye-9109b4273" target="_blank" class="clink">
+          <div class="clink-ico">in</div>linkedin.com/in/harsh-shetye
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="avail"><span class="adot"></span>Currently taking new projects</div>
+      <form class="cform" action="https://formspree.io/f/myklgajl" method="POST">
+        <div class="crow">
+          <div class="cf"><label>Your Name</label><input type="text" name="name" placeholder="Name" required/></div>
+          <div class="cf"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+        </div>
+        <div class="cf"><label>Brand / Company</label><input type="text" name="company" placeholder="Your brand name"/></div>
+        <div class="cf"><label>Service Needed</label>
+          <select name="service">
+            <option value="">Select a service</option>
+            <option>Social Media Marketing</option>
+            <option>Performance Marketing</option>
+            <option>Creative Production</option>
+            <option>Full Agency Retainer</option>
+          </select>
+        </div>
+        <div class="cf"><label>Tell Us About Your Goals</label><textarea name="message" placeholder="What are you trying to achieve?" required></textarea></div>
+        <button type="submit" class="csub">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- OUTRO -->
+<div class="outro">
+  <div class="outro-left">
+    <div class="outro-ty">
+      <span class="w">THANK </span><br><span class="y">YOU.</span>
+    </div>
+    <p class="outro-sub">We focus on aligning brands with the audiences that matter most. We look forward to learning more about your goals.</p>
+  </div>
+  <div class="outro-right">
+    <div class="outro-right-label">Ready to start?</div>
+    <div class="outro-right-big">We build brands<br>that convert.</div>
+    <a href="https://wa.me/919967982973?text=Hello%2C%20we%20are%20ready%20to%20scale%20our%20business%20with%20you" target="_blank" class="btn-dark">Start a Conversation →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">Market<span>Hinge</span></div>
+  <div class="f-nav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="f-social">
+    <a href="https://www.instagram.com/markethinge/" target="_blank">Instagram</a>
+    <a href="https://in.linkedin.com/in/harsh-shetye-9109b4273" target="_blank">LinkedIn</a>
+  </div>
+  <div class="f-copy">© 2025 MarketHinge. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
